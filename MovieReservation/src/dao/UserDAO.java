@@ -4,22 +4,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import util.DBConnector;
-import util.PasswordHasher;
 import vo.UserVO;
 
 /**
  * 사용자 데이터베이스 접근 클래스
  */
 public class UserDAO extends BaseDAO {
-    // 싱글톤 패턴 구현
     private static UserDAO instance;
-
     private UserDAO() {}
-
+    
     public static synchronized UserDAO getInstance() {
         if (instance == null) {
             instance = new UserDAO();

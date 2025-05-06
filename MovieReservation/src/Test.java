@@ -1,31 +1,31 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-
-import util.PasswordHasher;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.io.Console;
 
 public class Test {
-
-	public static void main(String[] args) {
-		String url = "jdbc:oracle:thin:@localhost:1521:xe"; // DB 주소
-        String user = "movieticket"; // DB 사용자명
-        String password = "movieticketpw"; // DB 비밀번호
-        String hash = PasswordHasher.hash("user123!");
-        System.out.println(hash); 
+    public static void main(String[] args) {
+        String url = "jdbc:oracle:thin:@localhost:1521:xe";
+        String user = "movieticket";
+        String password = "movieticketpw";
 
         try {
-            // 오라클 드라이버 로딩 (필요시)
+        	
+        	
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            // DB 연결 시도
-            Connection conn = DriverManager.getConnection(url, user, password);
-            System.out.println("DB 연결 성공!");
-            conn.close();
-        } catch (ClassNotFoundException e) {
-            System.out.println("ClassNotFoundException JDBC 드라이버 로딩 실패: " + e.getMessage());
-        } catch (SQLException e) {
-            System.out.println("DB 연결 실패: " + e.getMessage());
+            try (Connection conn = DriverManager.getConnection(url, user, password);
+                 Statement stmt = conn.createStatement();
+                 ResultSet rs = stmt.executeQuery("SELECT user_no, user_id, name FROM MT_USER")) {
+
+                while (rs.next()) {
+                    System.out.println("번호: " + rs.getInt("user_no")
+                        + ", 아이디: " + rs.getString("user_id")
+                        + ", 이름: " + rs.getString("name"));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-	}
-
+    }
 }
