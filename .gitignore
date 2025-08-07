@@ -1,0 +1,14 @@
+# Compiled class files
+bin/
+
+# Eclipse settings
+.metadata/
+.settings/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Log files
+*.log
