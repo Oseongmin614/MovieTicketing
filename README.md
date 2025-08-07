@@ -129,6 +129,7 @@ MovieTicketing/
 ## 🗄️ 데이터베이스 구조
 
 프로젝트에 필요한 모든 테이블, 시퀀스 및 관계는 `database_setup.sql` 파일에 정의되어 있습니다. 각 테이블의 상세한 역할과 구조는 다음과 같습니다.
+<img width="815" height="827" alt="image" src="https://github.com/user-attachments/assets/89f2fd00-972e-47b8-b7c0-d3b80b617729" />
 
 ### 1. `USERS`
 - **역할**: 사용자(회원)의 정보를 저장합니다.
@@ -189,4 +190,4 @@ MovieTicketing/
     *   `5/5`: 내 예매 내역 조회 및 예매 취소 기능 구현
     *   `5/6`: 관리자 기능 (영화 및 상영 시간 관리)
     *   `5/7`: 관리자 기능 (사용자 관리)
-    *   `5/12`: README 작성 및 프로젝트 최종 완성
+
